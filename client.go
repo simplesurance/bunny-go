@@ -135,17 +135,17 @@ func (c *Client) newDeleteRequest(urlStr string, params interface{}) (*http.Requ
 	return c.newRequest(http.MethodDelete, urlStr, nil)
 }
 
-// sendRequest sends an API request.
+// sendRequest sends a http Request to the bunny API.
+// If the server returns a 2xx status code with an response body, the body is
+// unmarshaled as JSON into result.
 // If the ctx times out ctx.Error() is returned.
 // If sending the response fails (http.Client.Do), the error will be returned.
 // If the server returns an 401 error, an AuthenticationError error is returned.
-// If the server returned an error and APIError as JSON in the body, an APIError is returned.
-// If the server returned a status code that is not 200 an HTTPError is returned.
+// If the server returned an error and contains an APIError as JSON in the body,
+// an APIError is returned.
+// If the server returned a status code that is not 2xx an HTTPError is returned.
 // If the HTTP request was successful, the response body is read and
 // unmarshaled into result.
-//
-// If the the server a 2xx status code with an response body, the body is
-// unmarshaled as JSON into result.
 func (c *Client) sendRequest(ctx context.Context, req *http.Request, result interface{}) error {
 	if ctx != nil {
 		req = req.WithContext(ctx)
