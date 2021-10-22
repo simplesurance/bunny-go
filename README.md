@@ -48,7 +48,7 @@ Endpoints](https://docs.bunny.net/reference/bunnynet-api-overview) are supported
 
 ### Example
 
-See [example_test.go](example_test.go)
+See [client_example_test.go](client_example_test.go)
 
 ## Status
 
