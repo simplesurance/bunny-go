@@ -21,9 +21,9 @@ Endpoints](https://docs.bunny.net/reference/bunnynet-api-overview) are supported
     - [x] Delete
     - [x] Get
     - [x] List
-    - [ ] Delete Edge Rule
-    - [ ] Add/Update Edge Rule
-    - [ ] Set Edge Rule Enabled
+    - [x] Delete Edge Rule
+    - [x] Add/Update Edge Rule
+    - [x] Set Edge Rule Enabled
     - [ ] Get Statistics
     - [ ] Purge Cache
     - [ ] Load Free Certificate

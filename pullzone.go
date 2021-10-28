@@ -6,3 +6,12 @@ package bunny
 type PullZoneService struct {
 	client *Client
 }
+
+// EdgeRuleService returns a Service to communicate with the Edge Rule API
+// endpoint for the given Pull Zone.
+func (s *PullZoneService) EdgeRuleService(pullZoneID int64) *EdgeRuleService {
+	return &EdgeRuleService{
+		client:     s.client,
+		pullZoneID: pullZoneID,
+	}
+}
