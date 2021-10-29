@@ -5,7 +5,10 @@
 
 bunny-go is an unofficial Go package to interact with the [Bunny.net HTTP
 API](https://docs.bunny.net/reference/bunnynet-api-overview). \
-It aims to be a low-level API that represents Bunny API as close as possible.
+It aims to be a low-level API that represents the Bunny API as close as
+possible. \
+The package only deviates from the API when it is necessary to prevent
+confusions.
 
 ## Features
 
