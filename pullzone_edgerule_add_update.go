@@ -5,12 +5,13 @@ import (
 	"fmt"
 )
 
-// AddOrUpdate adds or updates an Edge Rule for a Pull Zone.
-// The GUID field must not be set when creating a pull-zone.
+// AddOrUpdateEdgeRule adds or updates an Edge Rule of a Pull Zone.
+// The GUID field in the EdgeRule struct must not be set when creating a
+// pull-zone.
 //
 // Bunny.net API docs: https://docs.bunny.net/reference/pullzonepublic_addedgerule
-func (s *EdgeRuleService) AddOrUpdate(ctx context.Context, opts *EdgeRule) error {
-	req, err := s.client.newPostRequest(fmt.Sprintf("pullzone/%d/edgerules/addOrUpdate", s.pullZoneID), opts)
+func (s *PullZoneService) AddOrUpdateEdgeRule(ctx context.Context, pullZoneID int64, opts *EdgeRule) error {
+	req, err := s.client.newPostRequest(fmt.Sprintf("pullzone/%d/edgerules/addOrUpdate", pullZoneID), opts)
 	if err != nil {
 		return err
 	}
