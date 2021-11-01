@@ -113,18 +113,30 @@ func (c *Client) newGetRequest(urlStr string, params interface{}) (*http.Request
 	return c.newRequest(http.MethodGet, urlStr, nil)
 }
 
-// newPostRequest creates a bunny.NET API POST request.
-// If body is not nil, it is encoded as JSON as send as HTTP-Body.
-func (c *Client) newPostRequest(urlStr string, body interface{}) (*http.Request, error) {
+func toJSON(data interface{}) (io.Reader, error) {
 	var buf io.ReadWriter
 
-	if body != nil {
-		buf = &bytes.Buffer{}
-		enc := json.NewEncoder(buf)
-		enc.SetEscapeHTML(false)
-		if err := enc.Encode(body); err != nil {
-			return nil, err
-		}
+	if data == nil {
+		return http.NoBody, nil
+	}
+
+	buf = &bytes.Buffer{}
+	enc := json.NewEncoder(buf)
+	enc.SetEscapeHTML(false)
+
+	if err := enc.Encode(data); err != nil {
+		return nil, err
+	}
+
+	return buf, nil
+}
+
+// newPostRequest creates a bunny.NET API POST request.
+// If body is not nil, it is encoded as JSON and send as HTTP-Body.
+func (c *Client) newPostRequest(urlStr string, body interface{}) (*http.Request, error) {
+	buf, err := toJSON(body)
+	if err != nil {
+		return nil, err
 	}
 
 	req, err := c.newRequest(http.MethodPost, urlStr, buf)
@@ -135,8 +147,15 @@ func (c *Client) newPostRequest(urlStr string, body interface{}) (*http.Request,
 	return req, nil
 }
 
-func (c *Client) newDeleteRequest(urlStr string, params interface{}) (*http.Request, error) {
-	return c.newRequest(http.MethodDelete, urlStr, nil)
+// newDeleteRequest creates a bunny.NET API DELETE request.
+// If body is not nil, it is encoded as JSON and send as HTTP-Body.
+func (c *Client) newDeleteRequest(urlStr string, body interface{}) (*http.Request, error) {
+	buf, err := toJSON(body)
+	if err != nil {
+		return nil, err
+	}
+
+	return c.newRequest(http.MethodDelete, urlStr, buf)
 }
 
 // sendRequest sends a http Request to the bunny API.
