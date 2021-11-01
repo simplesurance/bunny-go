@@ -32,8 +32,8 @@ Endpoints](https://docs.bunny.net/reference/bunnynet-api-overview) are supported
     - [ ] Load Free Certificate
     - [ ] Add Custom Certificate
     - [ ] Remove Certificate
-    - [ ] Add Custom Hostname
-    - [ ] Remove Custom Hostname
+    - [x] Add Custom Hostname
+    - [x] Remove Custom Hostname
     - [ ] Set Force SSL
     - [ ] Reset Token Key
     - [ ] Add Allowed Referer
@@ -66,6 +66,24 @@ See [client_example_test.go](client_example_test.go)
   If names are inconsistent, the variant that is closer to the naming in the
   Bunny.Net Admin Panel should be chosen. The exception must be documented in
   the godoc.
+
+## Development
+
+### Running Integration Tests
+
+To run the integration test a Bunny.Net API Key is required. \
+The integration tests will create, modify and delete resources on your Bunny.Net
+account. Therefore it is **strongly recommended** to use a Bunny.Net account that is
+**not** used in production environments. \
+Bunny.Net might charge your account for certain API operations. \
+The integrationtest should remove all resources that they create. It can happen
+that cleaning up the resources fails and the account will contain test
+leftovers.
+
+```sh
+export BUNNY_API_KEY=MY-API-KEY
+make integrationtests
+```
 
 ## Status
 
