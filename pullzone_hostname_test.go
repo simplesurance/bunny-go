@@ -24,14 +24,14 @@ func TestPullZoneAddRemoveHostname(t *testing.T) {
 	pz := createPullZone(t, clt, &pzAddopts)
 
 	hostname := "testhostname-" + uuid.New().String() + ".bunny.net"
-	err := clt.PullZone.AddCustomHostname(context.Background(), *pz.ID, &bunny.AddCustomHostnameOptions{Hostname: hostname})
+	err := clt.PullZone.AddCustomHostname(context.Background(), *pz.ID, &bunny.AddCustomHostnameOptions{Hostname: &hostname})
 	require.NoError(t, err, "add hostname to pull zone failed")
 
 	getPz, err := clt.PullZone.Get(context.Background(), *pz.ID)
 	require.NoError(t, err, "pull zone get failed after adding hostname")
 	require.True(t, containsHostname(getPz.Hostnames, hostname), "hostname not returned by get after adding it")
 
-	err = clt.PullZone.RemoveCustomHostname(context.Background(), *pz.ID, &bunny.RemoveCustomHostnameOptions{Hostname: hostname})
+	err = clt.PullZone.RemoveCustomHostname(context.Background(), *pz.ID, &bunny.RemoveCustomHostnameOptions{Hostname: &hostname})
 	require.NoError(t, err, "removing hostname from pull zone failed")
 
 	getPz, err = clt.PullZone.Get(context.Background(), *pz.ID)
