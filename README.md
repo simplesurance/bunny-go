@@ -61,7 +61,8 @@ See [client_example_test.go](client_example_test.go)
   names. Exception are permitted if the field in the JSON messages are
   inconsistent and different names are used in the API for the same setting.
   If names are inconsistent, the variant that is closer to the naming in the
-  Bunny.Net Admin Panel should be chosen.
+  Bunny.Net Admin Panel should be chosen. The exception must be documented in
+  the godoc.
 
 ## Status
 
