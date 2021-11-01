@@ -46,7 +46,7 @@ Endpoints](https://docs.bunny.net/reference/bunnynet-api-overview) are supported
 - [ ] Edge Storage API
 - [ ] Stream API
 
-### Example
+## Example
 
 See [client_example_test.go](client_example_test.go)
 
