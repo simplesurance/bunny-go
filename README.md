@@ -50,6 +50,19 @@ Endpoints](https://docs.bunny.net/reference/bunnynet-api-overview) are supported
 
 See [client_example_test.go](client_example_test.go)
 
+## Design Principles
+
+- URL parameters are always passed by value as method parameter.
+- Data that is sent in the HTTP body is passed as struct
+  pointer to API methods.
+- Pointers instead of values are used to represent fields in body messages
+  structs. This allows to represent unset fields correctly.
+- Message field names should be as close as possible to the JSON message field
+  names. Exception are permitted if the field in the JSON messages are
+  inconsistent and different names are used in the API for the same setting.
+  If names are inconsistent, the variant that is closer to the naming in the
+  Bunny.Net Admin Panel should be chosen.
+
 ## Status
 
 The package is under initial development and should be considered as unstable.
