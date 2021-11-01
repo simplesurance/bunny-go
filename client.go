@@ -259,5 +259,5 @@ func (c *Client) logRequest(req *http.Request) {
 		return
 	}
 
-	c.httpRequestLogf(string(debugReq))
+	c.httpRequestLogf("sending http-request: %s", string(debugReq))
 }
