@@ -10,7 +10,7 @@ import (
 //
 // Bunny.net API docs: https://docs.bunny.net/reference/pullzonepublic_removehostname
 type RemoveCustomHostnameOptions struct {
-	// Hostname the hostname that is removed. (Required)
+	// Hostname is the hostname that is removed. (Required)
 	Hostname string `json:"Hostname"`
 }
 
