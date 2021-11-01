@@ -50,7 +50,7 @@ Endpoints](https://docs.bunny.net/reference/bunnynet-api-overview) are supported
 
 See [client_example_test.go](client_example_test.go)
 
-## Design Principals
+## Design Principles
 
 - URL parameters are always passed by value as method parameter.
 - Data that is sent in the HTTP body is passed as struct
