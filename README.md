@@ -46,9 +46,11 @@ Endpoints](https://docs.bunny.net/reference/bunnynet-api-overview) are supported
 - [ ] Edge Storage API
 - [ ] Stream API
 
-## Development
+### Example
 
-### Design Principals
+See [client_example_test.go](client_example_test.go)
+
+## Design Principals
 
 - URL parameters are always passed by value as method parameter.
 - Data that is sent in the HTTP body is passed as struct
@@ -60,10 +62,6 @@ Endpoints](https://docs.bunny.net/reference/bunnynet-api-overview) are supported
   inconsistent and different names are used in the API for the same setting.
   If names are inconsistent, the variant that is closer to the naming in the
   Bunny.Net Admin Panel should be chosen.
-
-### Example
-
-See [client_example_test.go](client_example_test.go)
 
 ## Status
 
