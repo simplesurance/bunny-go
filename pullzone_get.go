@@ -14,15 +14,15 @@ const (
 // Constants for the values of the PatternMatchingType of EdgeRuleTrigger and
 // TriggerMatchingType of an EdgeRule.
 const (
-	MatchingTypeAny int = 0
-	MatchingTypeAll     = iota
+	MatchingTypeAny int = iota
+	MatchingTypeAll
 	MatchingTypeNone
 )
 
 // Constants for the ActionType fields of an EdgeRule.
 const (
-	EdgeRuleActionTypeForceSSL int = 0
-	EdgeRuleActionTypeRedirect     = iota
+	EdgeRuleActionTypeForceSSL int = iota
+	EdgeRuleActionTypeRedirect
 	EdgeRuleActionTypeOriginURL
 	EdgeRuleActionTypeOverrideCacheTime
 	EdgeRuleActionTypeBlockRequest
@@ -39,8 +39,8 @@ const (
 
 // Constants for the Type field of an EdgeRuleTrigger.
 const (
-	EdgeRuleTriggerTypeURL           int = 0
-	EdgeRuleTriggerTypeRequestHeader     = iota
+	EdgeRuleTriggerTypeURL int = iota
+	EdgeRuleTriggerTypeRequestHeader
 	EdgeRuleTriggerTypeResponseHeader
 	EdgeRuleTriggerTypeURLExtension
 	EdgeRuleTriggerTypeCountryCode
