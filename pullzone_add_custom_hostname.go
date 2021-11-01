@@ -11,7 +11,7 @@ import (
 // Bunny.net API docs: https://docs.bunny.net/reference/pullzonepublic_addhostname
 type AddCustomHostnameOptions struct {
 	// Hostname the hostname to add. (Required)
-	Hostname string `json:"Hostname"`
+	Hostname *string `json:"Hostname,omitempty"`
 }
 
 // AddCustomHostname adds a custom hostname to the Pull Zone.
