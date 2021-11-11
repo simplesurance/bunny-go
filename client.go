@@ -31,10 +31,11 @@ type Client struct {
 	baseURL *url.URL
 	apiKey  string
 
-	httpClient      http.Client
-	httpRequestLogf Logf
-	logf            Logf
-	userAgent       string
+	httpClient       http.Client
+	httpRequestLogf  Logf
+	httpResponseLogf Logf
+	logf             Logf
+	userAgent        string
 
 	PullZone *PullZoneService
 }
@@ -47,12 +48,13 @@ var discardLogF = func(string, ...interface{}) {}
 // Bunny.net API docs: https://support.bunny.net/hc/en-us/articles/360012168840-Where-do-I-find-my-API-key-
 func NewClient(APIKey string, opts ...Option) *Client {
 	clt := Client{
-		baseURL:         mustParseURL(BaseURL),
-		apiKey:          APIKey,
-		httpClient:      *http.DefaultClient,
-		userAgent:       DefaultUserAgent,
-		httpRequestLogf: discardLogF,
-		logf:            discardLogF,
+		baseURL:          mustParseURL(BaseURL),
+		apiKey:           APIKey,
+		httpClient:       *http.DefaultClient,
+		userAgent:        DefaultUserAgent,
+		httpRequestLogf:  discardLogF,
+		httpResponseLogf: discardLogF,
+		logf:             discardLogF,
 	}
 
 	clt.PullZone = &PullZoneService{client: &clt}
@@ -187,6 +189,8 @@ func (c *Client) sendRequest(ctx context.Context, req *http.Request, result inte
 		return err
 	}
 
+	c.logResponse(resp)
+
 	defer resp.Body.Close() //nolint: errcheck
 
 	if err := checkResp(req, resp); err != nil {
@@ -287,4 +291,18 @@ func (c *Client) logRequest(req *http.Request) {
 	}
 
 	c.httpRequestLogf("sending http-request: %s", string(debugReq))
+}
+
+func (c *Client) logResponse(resp *http.Response) {
+	if c.httpResponseLogf == nil {
+		return
+	}
+
+	debugResp, err := httputil.DumpResponse(resp, true)
+	if err != nil {
+		c.httpRequestLogf("dumping http response failed: %s", err)
+		return
+	}
+
+	c.httpRequestLogf("received http-response: %s", string(debugResp))
 }
