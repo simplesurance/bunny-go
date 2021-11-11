@@ -252,6 +252,10 @@ func checkResp(req *http.Request, resp *http.Response) error {
 			return &httpErr
 		}
 
+		if len(httpErr.RespBody) == 0 {
+			return &httpErr
+		}
+
 		var apiErr APIError
 
 		if err := json.Unmarshal(httpErr.RespBody, &apiErr); err != nil {
