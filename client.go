@@ -96,11 +96,11 @@ func (c *Client) newRequest(method, urlStr string, body io.Reader) (*http.Reques
 	}
 
 	req.Header.Set(AccessKeyHeaderKey, c.apiKey)
-	req.Header.Add("Accept", "application/json")
+	req.Header.Add("Accept", contentTypeJSON)
 	req.Header.Set("User-Agent", c.userAgent)
 
 	if body != nil {
-		req.Header.Set("Content-Type", "application/json")
+		req.Header.Set(hdrContentTypeName, contentTypeJSON)
 	}
 
 	return req, nil
