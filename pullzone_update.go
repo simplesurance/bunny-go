@@ -25,7 +25,7 @@ type PullZoneUpdateOptions struct {
 	BudgetRedirectedCountries             []string `json:"BudgetRedirectedCountries,omitempty"`
 	CacheControlBrowserMaxAgeOverride     *int64   `json:"CacheControlBrowserMaxAgeOverride,omitempty"`
 	CacheControlMaxAgeOverride            *int64   `json:"CacheControlMaxAgeOverride,omitempty"`
-	CacheErrorResponse                    *bool    `json:"CacheErrorResponse,omitempty"`
+	CacheErrorResponses                   *bool    `json:"CacheErrorResponses,omitempty"`
 	ConnectionLimitPerIPCount             *int32   `json:"ConnectionLimitPerIPCount,omitempty"`
 	DisableCookies                        *bool    `json:"DisableCookies,omitempty"`
 	EnableAccessControlOriginHeader       *bool    `json:"EnableAccessControlOriginHeader,omitempty"`
