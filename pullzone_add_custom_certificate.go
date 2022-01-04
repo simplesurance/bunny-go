@@ -5,7 +5,10 @@ import (
 	"fmt"
 )
 
-type pullZoneAddCustomCertificateOptions struct {
+// PullZoneAddCustomCertificateOptions are the request parameters for the Add Custom Certificate API Endpoint.
+//
+// Bunny.net API docs: https://docs.bunny.net/reference/pullzonepublic_addcertificate
+type PullZoneAddCustomCertificateOptions struct {
 	Hostname       string `json:"Hostname"`
 	Certificate    []byte `json:"Certificate"`
 	CertificateKey []byte `json:"CertificateKey"`
@@ -14,14 +17,8 @@ type pullZoneAddCustomCertificateOptions struct {
 // AddCustomCertificate represents the Add Custom Certificate API Endpoint.
 //
 // Bunny.net API docs: https://docs.bunny.net/reference/pullzonepublic_addcertificate
-func (s *PullZoneService) AddCustomCertificate(ctx context.Context, pullZoneID int64, hostname string, certificates []byte, key []byte) error {
-	params := pullZoneAddCustomCertificateOptions{
-		Hostname:       hostname,
-		Certificate:    certificates,
-		CertificateKey: key,
-	}
-
-	req, err := s.client.newPostRequest(fmt.Sprintf("/pullzone/%d/addCertificate", pullZoneID), &params)
+func (s *PullZoneService) AddCustomCertificate(ctx context.Context, pullZoneID int64, options *PullZoneAddCustomCertificateOptions) error {
+	req, err := s.client.newPostRequest(fmt.Sprintf("/pullzone/%d/addCertificate", pullZoneID), options)
 	if err != nil {
 		return err
 	}
