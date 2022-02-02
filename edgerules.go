@@ -24,6 +24,8 @@ const (
 	EdgeRuleActionTypeIgnoreQueryString
 	EdgeRuleActionTypeDisableOptimizer
 	EdgeRuleActionTypeForceCompression
+	EdgeRuleActionTypeSetStatusCode
+	EdgeRuleActionTypeBypassPermaCache
 )
 
 // Constants for the Type field of an EdgeRuleTrigger.
