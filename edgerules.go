@@ -38,4 +38,6 @@ const (
 	EdgeRuleTriggerTypeRemoteIP
 	EdgeRuleTriggerTypeURLQueryString
 	EdgeRuleTriggerTypeRandomChance
+	EdgeRuleTriggerTypeStatusCode
+	EdgeRuleTriggerTypeRequestMethod
 )
