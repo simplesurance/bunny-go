@@ -44,7 +44,14 @@ Endpoints](https://docs.bunny.net/reference/bunnynet-api-overview) are supported
     - [ ] Remove Blocked IP
   - [ ] Purge
   - [ ] Statistics
-  - [ ] Storage Zone
+  - [ ] [Storage Zone](https://docs.bunny.net/reference/storagezonepublic_index)
+    - [x] List Storage Zones
+    - [x] Add Storage Zone
+    - [x] Get Storage Zone
+    - [x] Update Storage Zone
+    - [x] Delete Storage Zone
+    - [ ] Reset Password
+    - [ ] Reset Read-Only Password
   - [ ] User
 - [ ] Edge Storage API
 - [ ] Stream API

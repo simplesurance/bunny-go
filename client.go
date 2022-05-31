@@ -11,6 +11,7 @@ import (
 	"net/http"
 	"net/http/httputil"
 	"net/url"
+	"reflect"
 
 	"github.com/google/go-querystring/query"
 	"github.com/google/uuid"
@@ -44,8 +45,12 @@ type Client struct {
 	logf             Logf
 	userAgent        string
 
-	PullZone *PullZoneService
+	PullZone    *PullZoneService
+	StorageZone *StorageZoneService
 }
+
+// NoContentResponse is a special struct that should be used for requests that return a 204 response
+type NoContentResponse struct{}
 
 var discardLogF = func(string, ...interface{}) {}
 
@@ -65,6 +70,7 @@ func NewClient(APIKey string, opts ...Option) *Client {
 	}
 
 	clt.PullZone = &PullZoneService{client: &clt}
+	clt.StorageZone = &StorageZoneService{client: &clt}
 
 	for _, opt := range opts {
 		opt(&clt)
@@ -301,7 +307,9 @@ func (c *Client) unmarshalHTTPJSONBody(resp *http.Response, reqURL string, resul
 	}
 
 	if len(body) == 0 {
-		if result != nil {
+		var nc *NoContentResponse
+		isNoContent := reflect.TypeOf(result) == reflect.TypeOf(nc)
+		if result != nil && !isNoContent {
 			return &HTTPError{
 				RequestURL: reqURL,
 				StatusCode: resp.StatusCode,
