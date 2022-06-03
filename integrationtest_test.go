@@ -57,7 +57,7 @@ func createPullZone(t *testing.T, clt *bunny.Client, opts *bunny.PullZoneAddOpti
 	t.Cleanup(func() {
 		err := clt.PullZone.Delete(context.Background(), *pz.ID)
 		if err != nil {
-			t.Errorf("coult not delete pull zone (id: %d, name: %q) on test cleanup: %s", *pz.ID, *pz.Name, err)
+			t.Errorf("could not delete pull zone (id: %d, name: %q) on test cleanup: %s", *pz.ID, *pz.Name, err)
 			return
 
 		}
