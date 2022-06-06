@@ -9,10 +9,6 @@ import (
 //
 // Bunny.net API docs: https://docs.bunny.net/reference/pullzonepublic_delete
 func (s *PullZoneService) Delete(ctx context.Context, id int64) error {
-	req, err := s.client.newDeleteRequest(fmt.Sprintf("pullzone/%d", id), nil)
-	if err != nil {
-		return err
-	}
-
-	return s.client.sendRequest(ctx, req, nil)
+	path := fmt.Sprintf("pullzone/%d", id)
+	return resourceDelete(ctx, s.client, path, nil)
 }
