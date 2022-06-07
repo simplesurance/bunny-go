@@ -109,7 +109,7 @@ type PullZoneUpdateOptions struct {
 // Bunny.net API docs: https://docs.bunny.net/reference/pullzonepublic_updatepullzone
 func (s *PullZoneService) Update(ctx context.Context, id int64, opts *PullZoneUpdateOptions) (*PullZone, error) {
 	path := fmt.Sprintf("pullzone/%d", id)
-	return resourcePost[PullZone](
+	return resourcePostWithResponse[PullZone](
 		ctx,
 		s.client,
 		path,

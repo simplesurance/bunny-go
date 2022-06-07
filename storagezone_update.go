@@ -23,5 +23,5 @@ type StorageZoneUpdateOptions struct {
 // Bunny.net API docs: https://docs.bunny.net/reference/pullzonepublic_updatepullzone
 func (s *StorageZoneService) Update(ctx context.Context, id int64, opts *StorageZoneUpdateOptions) error {
 	path := fmt.Sprintf("storagezone/%d", id)
-	return resourcePostWith204Response(ctx, s.client, path, opts)
+	return resourcePost(ctx, s.client, path, opts)
 }

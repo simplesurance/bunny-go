@@ -29,5 +29,5 @@ func (s *PullZoneService) SetEdgeRuleEnabled(ctx context.Context, pullZoneID int
 	}
 
 	path := fmt.Sprintf("pullzone/%d/edgerules/%s/setEdgeRuleEnabled", pullZoneID, edgeRuleGUID)
-	return resourcePostWith204Response(ctx, s.client, path, opts)
+	return resourcePost(ctx, s.client, path, opts)
 }

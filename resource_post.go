@@ -2,7 +2,7 @@ package bunny
 
 import "context"
 
-func resourcePost[Resp any](
+func resourcePostWithResponse[Resp any](
 	ctx context.Context,
 	client *Client,
 	path string,
@@ -22,13 +22,13 @@ func resourcePost[Resp any](
 	return &res, nil
 }
 
-func resourcePostWith204Response(
+func resourcePost(
 	ctx context.Context,
 	client *Client,
 	path string,
 	requestBody any,
 ) error {
-	_, err := resourcePost[NoContentResponse](ctx, client, path, requestBody)
+	_, err := resourcePostWithResponse[NoContentResponse](ctx, client, path, requestBody)
 	if err != nil {
 		return err
 	}

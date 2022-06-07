@@ -19,5 +19,5 @@ type PullZoneAddCustomCertificateOptions struct {
 // Bunny.net API docs: https://docs.bunny.net/reference/pullzonepublic_addcertificate
 func (s *PullZoneService) AddCustomCertificate(ctx context.Context, pullZoneID int64, opts *PullZoneAddCustomCertificateOptions) error {
 	path := fmt.Sprintf("/pullzone/%d/addCertificate", pullZoneID)
-	return resourcePostWith204Response(ctx, s.client, path, opts)
+	return resourcePost(ctx, s.client, path, opts)
 }
