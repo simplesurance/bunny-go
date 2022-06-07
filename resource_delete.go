@@ -6,9 +6,9 @@ func resourceDelete(
 	ctx context.Context,
 	client *Client,
 	path string,
-	opts any,
+	requestBody any,
 ) error {
-	req, err := client.newDeleteRequest(path, opts)
+	req, err := client.newDeleteRequest(path, requestBody)
 	if err != nil {
 		return err
 	}

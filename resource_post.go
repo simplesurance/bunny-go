@@ -6,11 +6,11 @@ func resourcePost[Resp any](
 	ctx context.Context,
 	client *Client,
 	path string,
-	opts any,
+	requestBody any,
 ) (*Resp, error) {
 	var res Resp
 
-	req, err := client.newPostRequest(path, opts)
+	req, err := client.newPostRequest(path, requestBody)
 	if err != nil {
 		return nil, err
 	}
@@ -26,8 +26,11 @@ func resourcePostWith204Response(
 	ctx context.Context,
 	client *Client,
 	path string,
-	opts any,
+	requestBody any,
 ) error {
-	_, err := resourcePost[NoContentResponse](ctx, client, path, opts)
-	return err
+	_, err := resourcePost[NoContentResponse](ctx, client, path, requestBody)
+	if err != nil {
+		return err
+	}
+	return nil
 }
