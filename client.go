@@ -11,7 +11,6 @@ import (
 	"net/http"
 	"net/http/httputil"
 	"net/url"
-	"reflect"
 
 	"github.com/google/go-querystring/query"
 	"github.com/google/uuid"
@@ -48,9 +47,6 @@ type Client struct {
 	PullZone    *PullZoneService
 	StorageZone *StorageZoneService
 }
-
-// NoContentResponse is a special struct that should be used for requests that return a 204 response
-type NoContentResponse struct{}
 
 var discardLogF = func(string, ...interface{}) {}
 
@@ -307,13 +303,11 @@ func (c *Client) unmarshalHTTPJSONBody(resp *http.Response, reqURL string, resul
 	}
 
 	if len(body) == 0 {
-		var nc *NoContentResponse
-		isNoContent := reflect.TypeOf(result) == reflect.TypeOf(nc)
-		if result != nil && !isNoContent {
+		if result != nil {
 			return &HTTPError{
 				RequestURL: reqURL,
 				StatusCode: resp.StatusCode,
-				Errors:     []error{fmt.Errorf("response has no body, expected a json %T response bod", result)},
+				Errors:     []error{fmt.Errorf("response has no body, expected a json %T response body", result)},
 			}
 		}
 

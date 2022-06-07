@@ -28,9 +28,10 @@ func resourcePost(
 	path string,
 	requestBody any,
 ) error {
-	_, err := resourcePostWithResponse[NoContentResponse](ctx, client, path, requestBody)
+	req, err := client.newPostRequest(path, requestBody)
 	if err != nil {
 		return err
 	}
-	return nil
+
+	return client.sendRequest(ctx, req, nil)
 }
