@@ -34,11 +34,3 @@ jobs:
 
       - name: Test
         run: go test -v -race ./...
-
-  check:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: golangci-lint
-        run: docker run -v $GITHUB_WORKSPACE:/repo -w /repo golangci/golangci-lint:v1.46 golangci-lint run
