@@ -46,6 +46,7 @@ type Client struct {
 
 	PullZone    *PullZoneService
 	StorageZone *StorageZoneService
+	DNSZone     *DNSZoneService
 }
 
 var discardLogF = func(string, ...interface{}) {}
@@ -67,6 +68,7 @@ func NewClient(APIKey string, opts ...Option) *Client {
 
 	clt.PullZone = &PullZoneService{client: &clt}
 	clt.StorageZone = &StorageZoneService{client: &clt}
+	clt.DNSZone = &DNSZoneService{client: &clt}
 
 	for _, opt := range opts {
 		opt(&clt)
@@ -167,6 +169,17 @@ func (c *Client) newDeleteRequest(urlStr string, body interface{}) (*http.Reques
 	}
 
 	return c.newRequest(http.MethodDelete, urlStr, buf)
+}
+
+// newPutRequest creates a bunny.NET API PUT request.
+// If body is not nil, it is encoded as JSON and sent as a HTTP-Body.
+func (c *Client) newPutRequest(urlStr string, body interface{}) (*http.Request, error) {
+	buf, err := toJSON(body)
+	if err != nil {
+		return nil, err
+	}
+
+	return c.newRequest(http.MethodPut, urlStr, buf)
 }
 
 // sendRequest sends a http Request to the bunny API.
