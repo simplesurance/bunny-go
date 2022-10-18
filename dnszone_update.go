@@ -5,18 +5,18 @@ import (
 	"fmt"
 )
 
-// DNSZoneUpdateOptoins represents the request parameters for the Update DNS
+// DNSZoneUpdateOptions represents the request parameters for the Update DNS
 // Zone API endpoint.
 //
 // Bunny.net API docs: https://docs.bunny.net/reference/dnszonepublic_update
 type DNSZoneUpdateOptions struct {
-	CustomNameserversEnabled      bool   `json:"CustomNameserversEnabled,omitempty"`
-	Nameserver1                   string `json:"Nameserver1,omitempty"`
-	Nameserver2                   string `json:"Nameserver2,omitempty"`
-	SoaEmail                      string `json:"SoaEmail,omitempty"`
-	LoggingEnabled                bool   `json:"LoggingEnabled,omitempty"`
-	LoggingIPAnonymizationEnabled bool   `json:"LoggingIPAnonymizationEnabled,omitempty"`
-	LogAnonymizationType          int    `json:"LogAnonymizationType,omitempty"`
+	CustomNameserversEnabled      *bool   `json:"CustomNameserversEnabled,omitempty"`
+	Nameserver1                   *string `json:"Nameserver1,omitempty"`
+	Nameserver2                   *string `json:"Nameserver2,omitempty"`
+	SoaEmail                      *string `json:"SoaEmail,omitempty"`
+	LoggingEnabled                *bool   `json:"LoggingEnabled,omitempty"`
+	LoggingIPAnonymizationEnabled *bool   `json:"LoggingIPAnonymizationEnabled,omitempty"`
+	LogAnonymizationType          *int    `json:"LogAnonymizationType,omitempty"`
 }
 
 // Update changes the configuration the DNS Zone with the given ID.

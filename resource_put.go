@@ -21,17 +21,3 @@ func resourcePutWithResponse[Resp any](
 
 	return &res, nil
 }
-
-func resourcePut(
-	ctx context.Context,
-	client *Client,
-	path string,
-	requestBody any,
-) error {
-	req, err := client.newPutRequest(path, requestBody)
-	if err != nil {
-		return err
-	}
-
-	return client.sendRequest(ctx, req, nil)
-}

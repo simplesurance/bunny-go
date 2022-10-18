@@ -5,30 +5,30 @@ import (
 	"fmt"
 )
 
-// AddDNSRecord represents the message that is sent to the
+// AddOrUpdateDNSRecordOptions represents the message that is sent to the
 // Add DNS Record API Endpoint.
 //
 // Bunny.net API docs: https://docs.bunny.net/reference/dnszonepublic_addrecord
 type AddOrUpdateDNSRecordOptions struct {
-	ID                     int64                   `json:"Id,omitempty"`
-	Type                   int                     `json:"Type"`
-	Ttl                    int32                   `json:"Ttl,omitempty"`
-	Value                  string                  `json:"Value,omitempty"`
-	Name                   string                  `json:"Name,omitempty"`
-	Weight                 int32                   `json:"Weight,omitempty"`
-	Priority               int32                   `json:"Priority,omitempty"`
-	Flags                  int                     `json:"Flags,omitempty"`
-	Tag                    string                  `json:"Tag,omitempty"`
-	Port                   int32                   `json:"Port,omitempty"`
-	PullZoneId             int64                   `json:"PullZoneId,omitempty"`
-	ScriptId               int64                   `json:"ScriptId,omitempty"`
-	Accelerated            bool                    `json:"Accelerated,omitempty"`
-	MonitorType            int                     `json:"MonitorType,omitempty"`
-	GeolocationLatitude    float64                 `json:"GeolocationLatitude,omitempty"`
-	GeolocationLongitude   float64                 `json:"GeolocationLongitude,omitempty"`
-	LatencyZone            string                  `json:"LatencyZone,omitempty"`
-	SmartRoutingType       int                     `json:"SmartRoutingType,omitempty"`
-	Disabled               bool                    `json:"Disabled,omitempty"`
+	ID                     *int64                  `json:"Id,omitempty"`
+	Type                   *int                    `json:"Type,omitempty"`
+	TTL                    *int32                  `json:"Ttl,omitempty"`
+	Value                  *string                 `json:"Value,omitempty"`
+	Name                   *string                 `json:"Name,omitempty"`
+	Weight                 *int32                  `json:"Weight,omitempty"`
+	Priority               *int32                  `json:"Priority,omitempty"`
+	Flags                  *int                    `json:"Flags,omitempty"`
+	Tag                    *string                 `json:"Tag,omitempty"`
+	Port                   *int32                  `json:"Port,omitempty"`
+	PullZoneID             *int64                  `json:"PullZoneId,omitempty"`
+	ScriptID               *int64                  `json:"ScriptId,omitempty"`
+	Accelerated            *bool                   `json:"Accelerated,omitempty"`
+	MonitorType            *int                    `json:"MonitorType,omitempty"`
+	GeolocationLatitude    *float64                `json:"GeolocationLatitude,omitempty"`
+	GeolocationLongitude   *float64                `json:"GeolocationLongitude,omitempty"`
+	LatencyZone            *string                 `json:"LatencyZone,omitempty"`
+	SmartRoutingType       *int                    `json:"SmartRoutingType,omitempty"`
+	Disabled               *bool                   `json:"Disabled,omitempty"`
 	EnvironmentalVariables []EnvironmentalVariable `json:"EnvironmentalVariables,omitempty"`
 }
 
