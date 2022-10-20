@@ -52,23 +52,23 @@ Endpoints](https://docs.bunny.net/reference/bunnynet-api-overview) are supported
     - [x] Delete Storage Zone
     - [ ] Reset Password
     - [ ] Reset Read-Only Password
-  - [ ] User
+- [ ] User
+- [ ] [DNS Zone](https://docs.bunny.net/reference/dnszonepublic_index)
+  - [x] List DNS Zones
+  - [x] Add DNS Zone
+  - [x] Get DNS Zone
+  - [x] Update DNS Zones
+  - [x] Delete DNS Zone
+  - [ ] Export DNS Zone
+  - [ ] Get DNS Query Statistics
+  - [x] Add DNS Record
+  - [x] Update DNS Record
+  - [x] Delete DNS Record
+  - [ ] Recheck DNS Configuration
+  - [ ] Dismiss DNS Configuration Notice
+  - [ ] Import DNS Records
 - [ ] Edge Storage API
 - [ ] Stream API
-- [ ] DNS Zone API
-    - [x] List DNS Zones
-    - [x] Add DNS Zone
-    - [x] Get DNS Zone
-    - [x] Update DNS Zones
-    - [x] Delete DNS Zone
-    - [ ] Export DNS Zone
-    - [ ] Get DNS Query Statistics
-    - [x] Add DNS Record
-    - [x] Update DNS Record
-    - [x] Delete DNS Record
-    - [ ] Recheck DNS Configuration
-    - [ ] Dismiss DNS Configuration Notice
-    - [ ] Import DNS Records
 
 ## Example
 
