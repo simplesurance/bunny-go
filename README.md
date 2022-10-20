@@ -55,6 +55,20 @@ Endpoints](https://docs.bunny.net/reference/bunnynet-api-overview) are supported
   - [ ] User
 - [ ] Edge Storage API
 - [ ] Stream API
+- [ ] DNS Zone API
+    - [x] List DNS Zones
+    - [x] Add DNS Zone
+    - [x] Get DNS Zone
+    - [x] Update DNS Zones
+    - [x] Delete DNS Zone
+    - [ ] Export DNS Zone
+    - [ ] Get DNS Query Statistics
+    - [x] Add DNS Record
+    - [x] Update DNS Record
+    - [x] Delete DNS Record
+    - [ ] Recheck DNS Configuration
+    - [ ] Dismiss DNS Configuration Notice
+    - [ ] Import DNS Records
 
 ## Example
 
