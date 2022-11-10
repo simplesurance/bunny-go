@@ -18,8 +18,11 @@ const envVarApiKeyName = "BUNNY_API_KEY"
 // pullzoneNamePrefix is the prefix for all pullzones created by the integrationtests.
 const pullzoneNamePrefix = "bunny-go-test-"
 
-// pullzoneNamePrefix is the prefix for all pullzones created by the integrationtests.
+// storagezoneNamePrefix is the prefix for all storage zones created by the integrationtests.
 const storagezoneNamePrefix = "bunny-go-test-storage-"
+
+// videoLibraryNamePrefix is the prefix for all video libraries created by the integrationtests.
+const videoLibraryNamePrefix = "bunny-go-test-videolibrary-"
 
 func newClient(t *testing.T) *bunny.Client {
 	t.Helper()
@@ -39,6 +42,10 @@ func randomPullZoneName() string {
 
 func randomStorageZoneName() string {
 	return storagezoneNamePrefix + uuid.New().String()
+}
+
+func randomVideoLibraryName()  string {
+	return videoLibraryNamePrefix + uuid.New().String()
 }
 
 // createPullZone creates a Pull Zone via the bunny client and registers a
@@ -74,22 +81,49 @@ func createPullZone(t *testing.T, clt *bunny.Client, opts *bunny.PullZoneAddOpti
 func createStorageZone(t *testing.T, clt *bunny.Client, opts *bunny.StorageZoneAddOptions) *bunny.StorageZone {
 	t.Helper()
 
-	pz, err := clt.StorageZone.Add(context.Background(), opts)
+	sz, err := clt.StorageZone.Add(context.Background(), opts)
 	require.NoError(t, err, "creating storage zone failed")
-	require.NotNil(t, pz.ID, "add returned storage zone with nil id")
-	require.NotNil(t, pz.Name, "add returned storage zone with nil name")
+	require.NotNil(t, sz.ID, "add returned storage zone with nil id")
+	require.NotNil(t, sz.Name, "add returned storage zone with nil name")
 
-	t.Logf("created storage zone: %q, id: %d", *pz.Name, *pz.ID)
+	t.Logf("created storage zone: %q, id: %d", *sz.Name, *sz.ID)
 
 	t.Cleanup(func() {
-		err := clt.StorageZone.Delete(context.Background(), *pz.ID)
+		err := clt.StorageZone.Delete(context.Background(), *sz.ID)
 		if err != nil {
-			t.Errorf("could not delete storage zone (id: %d, name: %q) on test cleanup: %s", *pz.ID, *pz.Name, err)
+			t.Errorf("could not delete storage zone (id: %d, name: %q) on test cleanup: %s", *sz.ID, *sz.Name, err)
 			return
 
 		}
-		t.Logf("cleanup: deleted storage zone: %q, id: %d", *pz.Name, *pz.ID)
+		t.Logf("cleanup: deleted storage zone: %q, id: %d", *sz.Name, *sz.ID)
 	})
 
-	return pz
+	return sz
+}
+
+
+// createVideoLibrary creates a Video Library via the bunny client and registers a
+// testing cleanup function to remove it when the test terminates.
+// If creating the Video Library fails, t.Fatal is called.
+func createVideoLibrary(t *testing.T, clt *bunny.Client, opts *bunny.VideoLibraryAddOptions) *bunny.VideoLibrary {
+	t.Helper()
+
+	vl, err := clt.VideoLibrary.Add(context.Background(), opts)
+	require.NoError(t, err, "creating video library failed")
+	require.NotNil(t, vl.ID, "add returned video library with nil id")
+	require.NotNil(t, vl.Name, "add returned video library with nil name")
+
+	t.Logf("created video library: %q, id: %d", *vl.Name, *vl.ID)
+
+	t.Cleanup(func() {
+		err := clt.VideoLibrary.Delete(context.Background(), *vl.ID)
+		if err != nil {
+			t.Errorf("could not delete video library (id: %d, name: %q) on test cleanup: %s", *vl.ID, *vl.Name, err)
+			return
+
+		}
+		t.Logf("cleanup: deleted video library: %q, id: %d", *vl.Name, *vl.ID)
+	})
+
+	return vl
 }

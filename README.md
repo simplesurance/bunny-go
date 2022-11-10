@@ -67,8 +67,21 @@ Endpoints](https://docs.bunny.net/reference/bunnynet-api-overview) are supported
   - [ ] Recheck DNS Configuration
   - [ ] Dismiss DNS Configuration Notice
   - [ ] Import DNS Records
+- [ ] Stream Video Library
+  - [x] List Video Libraries
+  - [x] Add Video Library
+  - [x] Get Video Library
+  - [x] Update Video Library
+  - [x] Delete Video Library
+  - [ ] Reset Password
+  - [ ] Reset Password
+  - [ ] Add Watermark
+  - [ ] Delete Watermark
+  - [ ] Add Allowed Referer
+  - [ ] Remove Allowed Referer
+  - [ ] Add Blocked Referer
+  - [ ] Remove Blocked Referer
 - [ ] Edge Storage API
-- [ ] Stream API
 
 ## Example
 

@@ -44,9 +44,10 @@ type Client struct {
 	logf             Logf
 	userAgent        string
 
-	PullZone    *PullZoneService
-	StorageZone *StorageZoneService
-	DNSZone     *DNSZoneService
+	PullZone     *PullZoneService
+	StorageZone  *StorageZoneService
+	DNSZone      *DNSZoneService
+	VideoLibrary *VideoLibraryService
 }
 
 var discardLogF = func(string, ...interface{}) {}
@@ -69,6 +70,7 @@ func NewClient(APIKey string, opts ...Option) *Client {
 	clt.PullZone = &PullZoneService{client: &clt}
 	clt.StorageZone = &StorageZoneService{client: &clt}
 	clt.DNSZone = &DNSZoneService{client: &clt}
+	clt.VideoLibrary = &VideoLibraryService{client: &clt}
 
 	for _, opt := range opts {
 		opt(&clt)

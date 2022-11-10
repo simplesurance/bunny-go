@@ -176,5 +176,5 @@ type EdgeRule struct {
 // Bunny.net API docs: https://docs.bunny.net/reference/pullzonepublic_index2
 func (s *PullZoneService) Get(ctx context.Context, id int64) (*PullZone, error) {
 	path := fmt.Sprintf("pullzone/%d", id)
-	return resourceGet[PullZone](ctx, s.client, path)
+	return resourceGet[PullZone](ctx, s.client, path, nil)
 }

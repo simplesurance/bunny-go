@@ -93,5 +93,5 @@ type EnvironmentalVariable struct {
 // Bunny.net API docs: https://docs.bunny.net/reference/dnszonepublic_index2
 func (s *DNSZoneService) Get(ctx context.Context, id int64) (*DNSZone, error) {
 	path := fmt.Sprintf("dnszone/%d", id)
-	return resourceGet[DNSZone](ctx, s.client, path)
+	return resourceGet[DNSZone](ctx, s.client, path, nil)
 }
