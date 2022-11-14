@@ -70,7 +70,6 @@ type VideoLibraryGetOpts struct {
 // Get retrieves the Video Library with the given id.
 //
 // Bunny.net API docs: https://docs.bunny.net/reference/videolibrarypublic_index2
-// TODO: add `includeAccessKey` path param
 func (s *VideoLibraryService) Get(
 	ctx context.Context,
 	id int64,
