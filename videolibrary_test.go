@@ -18,7 +18,6 @@ func TestVideoLibraryCRUD(t *testing.T) {
 
 	vlName := randomResourceName("videolibrary")
 	vlRegion := "NY"
-	// vlOrigin := "http://bunny.net"
 	vlAddopts := bunny.VideoLibraryAddOptions{
 		Name: &vlName,
 		ReplicationRegions: []string{vlRegion},
@@ -50,7 +49,7 @@ func TestVideoLibraryCRUD(t *testing.T) {
 		PlayerTokenAuthenticationEnabled: &setTrue,
 		AllowDirectPlay: &setFalse,
 	}
-	updateErr := clt.VideoLibrary.Update(context.Background(), *vl.ID, &updateOpts)
+	_, updateErr := clt.VideoLibrary.Update(context.Background(), *vl.ID, &updateOpts)
 	assert.Nil(t, updateErr)
 
 	// get the updated video library and validate updated properties
@@ -79,10 +78,17 @@ func TestVideoLibraryCRUD(t *testing.T) {
 	// check the total number of video libraries is the expected amount
 	listVlAfter, err := clt.VideoLibrary.List(context.Background(), nil)
 	require.NoError(t, err, "video library list failed after add")
+	assert.Nil(t, listVlAfter.Items[0].APIAccessKey)
 	assert.Equal(
 		t,
 		*listVlBefore.TotalItems + 1,
 		*listVlAfter.TotalItems,
 		"video libraries total items should increase by exactly 1",
 	)
+
+	// check that listing video libraries and requesting keys works
+	listVlWithKeys, err := clt.VideoLibrary.List(context.Background(), &bunny.VideoLibraryListOpts{
+		VideoLibraryGetOpts: bunny.VideoLibraryGetOpts{true},
+	})
+	assert.NotNil(t, listVlWithKeys.Items[0].APIAccessKey)
 }
