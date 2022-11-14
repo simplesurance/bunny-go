@@ -26,7 +26,7 @@ func (s *VideoLibraryService) List(
 	return videLibraryList[VideoLibraries](ctx, s.client, "/videolibrary", opts)
 }
 
-// NOTE: this is an override of resourceLibraryList strictly for the purpose of
+// NOTE: this is an override of resourceList strictly for the purpose of
 // providing the extra query param options in VideoLibraryGetOpts. In the future
 // hopefully it can be removed for a better solution. See the following discussion:
 // https://github.com/simplesurance/bunny-go/pull/27#discussion_r1021270152
