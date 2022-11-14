@@ -15,15 +15,6 @@ import (
 
 const envVarApiKeyName = "BUNNY_API_KEY"
 
-// pullzoneNamePrefix is the prefix for all pullzones created by the integrationtests.
-const pullzoneNamePrefix = "bunny-go-test-"
-
-// storagezoneNamePrefix is the prefix for all storage zones created by the integrationtests.
-const storagezoneNamePrefix = "bunny-go-test-storage-"
-
-// videoLibraryNamePrefix is the prefix for all video libraries created by the integrationtests.
-const videoLibraryNamePrefix = "bunny-go-test-videolibrary-"
-
 func newClient(t *testing.T) *bunny.Client {
 	t.Helper()
 
@@ -36,16 +27,8 @@ func newClient(t *testing.T) *bunny.Client {
 	return bunny.NewClient(apiKey, bunny.WithHTTPRequestLogger(t.Logf))
 }
 
-func randomPullZoneName() string {
-	return pullzoneNamePrefix + uuid.New().String()
-}
-
-func randomStorageZoneName() string {
-	return storagezoneNamePrefix + uuid.New().String()
-}
-
-func randomVideoLibraryName()  string {
-	return videoLibraryNamePrefix + uuid.New().String()
+func randomResourceName(resource string) string {
+	return "bunny-go-test-" + resource + "-" + uuid.New().String()
 }
 
 // createPullZone creates a Pull Zone via the bunny client and registers a

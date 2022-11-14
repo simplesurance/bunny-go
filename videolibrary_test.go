@@ -16,7 +16,7 @@ import (
 func TestVideoLibraryCRUD(t *testing.T) {
 	clt := newClient(t)
 
-	vlName := randomVideoLibraryName()
+	vlName := randomResourceName("videolibrary")
 	vlRegion := "NY"
 	// vlOrigin := "http://bunny.net"
 	vlAddopts := bunny.VideoLibraryAddOptions{

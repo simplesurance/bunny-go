@@ -62,7 +62,7 @@ type VideoLibrary struct {
 	FontFamily                       *string  `json:"FontFamily,omitempty"`
 }
 
-// VideoLibraryGetOpts represents allowed when Getting or Listing Video Libraries
+// VideoLibraryGetOpts represents optional query parameters available when Getting or Listing Video Libraries
 type VideoLibraryGetOpts struct {
 	IncludeAccessKey bool `url:"includeAccessKey,omitempty"`
 }

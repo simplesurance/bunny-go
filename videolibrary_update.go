@@ -48,7 +48,7 @@ type VideoLibraryUpdateOptions struct {
 	FontFamily                       *string `json:"FontFamily,omitempty"`
 }
 
-// Update changes the configuration the Storage-Zone with the given ID.
+// Update changes the configuration the Video Library with the given ID.
 // Bunny.net API docs: https://docs.bunny.net/reference/pullzonepublic_updatepullzone
 func (s *VideoLibraryService) Update(ctx context.Context, id int64, opts *VideoLibraryUpdateOptions) (*VideoLibrary, error) {
 	path := fmt.Sprintf("videolibrary/%d", id)
