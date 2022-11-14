@@ -24,7 +24,7 @@ func TestSetForceSSL(t *testing.T) {
 
 	pz := createPullZone(t, clt, &pzAddopts)
 
-	hostname := "testhostname-" + uuid.New().String() + ".bunny.net"
+	hostname := "testhostname-" + uuid.New().String() + ".bunnytftest.de"
 	err := clt.PullZone.AddCustomHostname(ctx, *pz.ID, &bunny.AddCustomHostnameOptions{Hostname: &hostname})
 	require.NoError(t, err, "add hostname to pull zone failed")
 
