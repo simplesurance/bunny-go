@@ -64,7 +64,7 @@ type VideoLibrary struct {
 
 // VideoLibraryGetOpts represents optional query parameters available when Getting or Listing Video Libraries
 type VideoLibraryGetOpts struct {
-	IncludeAccessKey bool `url:"includeAccessKey,omitempty"`
+	IncludeAccessKey bool `url:"includeAccessKey"`
 }
 
 // Get retrieves the Video Library with the given id.
