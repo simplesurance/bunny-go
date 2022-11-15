@@ -6,11 +6,11 @@ func resourceGet[Resp any](
 	ctx context.Context,
 	client *Client,
 	path string,
-	opts interface{},
+	params interface{},
 ) (*Resp, error) {
 	var res Resp
 
-	req, err := client.newGetRequest(path, opts)
+	req, err := client.newGetRequest(path, params)
 	if err != nil {
 		return nil, err
 	}
