@@ -17,7 +17,6 @@ Endpoints](https://docs.bunny.net/reference/bunnynet-api-overview) are supported
 
 - [ ] bunny.net API
   - [ ] Billing
-  - [ ] Stream Video Library
   - [ ] [Pull Zone](https://docs.bunny.net/reference/pullzonepublic_index)
     - [x] Add
     - [x] Update
@@ -114,8 +113,8 @@ See [client_example_test.go](client_example_test.go)
 
 To run the integration test a Bunny.Net API Key is required. \
 The integration tests will create, modify and delete resources on your Bunny.Net
-account. Therefore it is **strongly recommended** to use a Bunny.Net account that is
-**not** used in production environments. \
+account. Therefore it is **strongly recommended** to use a Bunny.Net account
+that is **not** used in production environments. \
 Bunny.Net might charge your account for certain API operations. \
 The integrationtest should remove all resources that they create. It can happen
 that cleaning up the resources fails and the account will contain test
