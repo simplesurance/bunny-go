@@ -29,5 +29,5 @@ type StorageZone struct {
 // Bunny.net API docs: https://docs.bunny.net/reference/storagezonepublic_index2
 func (s *StorageZoneService) Get(ctx context.Context, id int64) (*StorageZone, error) {
 	path := fmt.Sprintf("storagezone/%d", id)
-	return resourceGet[StorageZone](ctx, s.client, path)
+	return resourceGet[StorageZone](ctx, s.client, path, nil)
 }

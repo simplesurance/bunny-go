@@ -16,7 +16,7 @@ import (
 func TestStorageZoneCRUD(t *testing.T) {
 	clt := newClient(t)
 
-	szName := randomStorageZoneName()
+	szName := randomResourceName("storagezone")
 	szOrigin := "http://bunny.net"
 	szRegion := "NY"
 	szAddopts := bunny.StorageZoneAddOptions{

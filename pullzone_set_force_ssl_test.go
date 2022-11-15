@@ -18,7 +18,7 @@ func TestSetForceSSL(t *testing.T) {
 	clt := newClient(t)
 
 	pzAddopts := bunny.PullZoneAddOptions{
-		Name:      randomPullZoneName(),
+		Name:      randomResourceName("pullzone"),
 		OriginURL: "http://bunny.net",
 	}
 
